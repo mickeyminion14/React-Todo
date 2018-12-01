@@ -5,6 +5,7 @@
   "dependencies": {
     "bulma": "^0.7.2",
     "bulma-calendar": "^5.0.3",
+    "bulma-toast": "^1.4.0",
     "react": "^16.6.3",
     "react-datepicker": "^2.0.0",
     "react-dom": "^16.6.3",

@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-
+import { toast } from "bulma-toast";
 class Displaytask extends Component {
 
   constructor(props) {
@@ -21,9 +21,24 @@ class Displaytask extends Component {
     return -1; //to handle the case where the value doesn't exist
 }
 
+  makeToast(msg) {
+    toast({
+      message: msg,
+
+      dismissible: true,
+     
+      duration: 2000,
+      position: "top-right",
+      closeOnClick: true,
+      opacity: 1
+    });
+  }
+
   deleteTask(id) {
     var i=this.getIndex(id, this.props.taskArr, "id");
     this.props.deleteTaskState(i);
+    this.makeToast("Task Deleted !")
+  
    
   }
   changeVisibility () {
