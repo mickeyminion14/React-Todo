@@ -4,7 +4,7 @@ class Addtask extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = { title: "", description : "" };
 
     // This binding is necessary to make `this` work in the callback
@@ -23,10 +23,16 @@ class Addtask extends Component {
   }
 
   addTask = () =>  {
-
+    
+    //copying task arr and passing new object to parent state method
     const newTaskArr= {id:Date.now(),title:this.state.title, description:this.state.description };
- 
-    this.props.handleState(newTaskArr);
+    this.props.addTaskState(newTaskArr);
+
+    //reseting text field values
+    this.setState(state =>({
+     title : "" ,
+     description : ""
+    }));
   }
   
   
