@@ -14,7 +14,8 @@ class test extends Component {
     // const newArr = [ ...this.state.taskArr, newTaskArr ];
     this.setState(state =>({
       // taskArr : newArr
-      taskArr: state.taskArr.concat(newTaskArr)
+      taskArr: state.taskArr.concat(newTaskArr) ,
+      emptyList : false   
     }));
   };
 
@@ -24,10 +25,18 @@ class test extends Component {
     console.log(newArr);
     newArr.splice(id,1)
     console.log(newArr);
+    if(newArr.length===0) {
+    this.setState(state =>({
+      emptyList : true ,
+      taskArr: newArr
+    }));
+  }
+  else {
     this.setState(state =>({
       
       taskArr: newArr
     }));
+  }
   };
 
   render () {
@@ -39,7 +48,7 @@ class test extends Component {
           <Addtask addTaskState={this.addTaskState} taskArr={this.state.taskArr} deleteTaskState={this.deleteTaskState} emptyList = {this.state.emptyList}/>
         </div>
         <div className="column is-three-fifths">
-          <Displaytasks addTaskState={this.addTaskState} taskArr={this.state.taskArr} deleteTaskState={this.deleteTaskState}/>
+          <Displaytasks addTaskState={this.addTaskState} taskArr={this.state.taskArr} deleteTaskState={this.deleteTaskState} emptyList = {this.state.emptyList}/>
         </div>
          
           

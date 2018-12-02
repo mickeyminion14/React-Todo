@@ -1,7 +1,11 @@
 import React , {Component} from 'react';
 import { toast } from "bulma-toast";
+import face from "../assets/images/face_empty.png";
+
+
 class Displaytask extends Component {
 
+  
   constructor(props) {
     super(props);
     console.log(props);
@@ -9,6 +13,10 @@ class Displaytask extends Component {
     this.deleteTask = this.deleteTask.bind(this);
     this.getIndex = this.getIndex.bind(this);
     this.changeVisibility = this.changeVisibility.bind(this);
+
+   
+  
+    
 
   }
 
@@ -46,18 +54,21 @@ class Displaytask extends Component {
       this.setState(prevState => ({ emptyList: !prevState.emptyList }));
   }
 
+  
+
   render () {
     return (
       
       <div >
         {/* <button onClick={this.changeVisibility}>assasa</button> */}
-        {
-          // !true
-          // ?
+       
          <div className="tile is-parent">
       <article className="tile is-child notification is-info">
         <p className="title has-text-centered">Your Tasks !</p>
         {/* <p className="subtitle">Aligned with the right tile</p> */}
+        {
+          !this.props.emptyList
+          ?
         <div className="content">
             <div>
               {this.props.taskArr.map( (tasks) =>
@@ -85,10 +96,32 @@ class Displaytask extends Component {
 
             </div>
         </div>
+         : null
+        }
+        
+        
+        {
+          this.props.emptyList
+          ?
+          <div className="tile is-parent is-flex" style={{justifyContent : "center"}}>
+                    
+          
+          
+           
+              <img alt="lol" src={face}></img>
+              {/* <p className="subtitle ">With even more content</p> */}
+            
+           
+          
+        </div>
+            : null
+        }
       </article>
     </div>
-    //  : null
-        }
+    
+
+
+       
       </div>
     );
   }
